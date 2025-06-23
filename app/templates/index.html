@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orbisect Satellite Security</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Space-themed colors */
+        :root {
+            --space-dark: #0a1a2f;
+            --space-blue: #1a3a6a;
+            --signal-green: #38a169;
+            --signal-yellow: #d69e2e;
+            --signal-red: #e53e3e;
+        }
+        
+        .satellite-card {
+            background: var(--space-dark);
+            border: 1px solid #2d3748;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .satellite-card.secure {
+            border-left: 4px solid var(--signal-green);
+        }
+        
+        .satellite-card.warning {
+            border-left: 4px solid var(--signal-yellow);
+        }
+        
+        .satellite-card.critical {
+            border-left: 4px solid var(--signal-red);
+        }
+        
+        .signal-meter {
+            background: #2d3748;
+            height: 8px;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        
+        .signal-level {
+            background: var(--signal-green);
+            height: 100%;
+            border-radius: 4px;
+        }
+        
+        .threat-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .threat-table th, .threat-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #2d3748;
+        }
+        
+        .severity-high {
+            color: var(--signal-red);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-satellite-dish"></i> Orbisect Satellite Security</h1>
+            <p class="subtitle">Advanced telemetry protection for space assets</p>
+        </header>
+        
+        <!-- Satellite Status Grid -->
+        <section class="satellite-status">
+            <h2><i class="fas fa-satellite"></i> Active Satellite Connections</h2>
+            <div class="satellite-grid" id="satellite-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+        
+        <!-- System Status -->
+        <div class="status-card">
+            <h2><i class="fas fa-shield-alt"></i> Security Status</h2>
+            <div class="status-item">
+                <span class="status-label">Protected Satellites:</span>
+                <span class="status-value">3/5 (Demo Limit)</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Last Threat Detected:</span>
+                <span class="status-value">Signal jamming attempt (12m ago)</span>
+            </div>
+        </div>
+        
+        <!-- Threat Detection -->
+        <section class="threat-detection">
+            <h2><i class="fas fa-radar"></i> Recent Security Events</h2>
+            <table class="threat-table">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Satellite</th>
+                        <th>Threat Type</th>
+                        <th>Severity</th>
+                    </tr>
+                </thead>
+                <tbody id="threat-events">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Value Proposition -->
+        <section class="value-prop">
+            <h2><i class="fas fa-rocket"></i> Why Orbisect for Satellite Security?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-broadcast-tower fa-3x"></i>
+                    <h3>Telemetry Protection</h3>
+                    <p>End-to-end encryption for all satellite communications</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-secret fa-3x"></i>
+                    <h3>Signal Spoofing Detection</h3>
+                    <p>AI-powered identification of fake satellite signals</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-history fa-3x"></i>
+                    <h3>Command History Audit</h3>
+                    <p>Tamper-proof log of all satellite commands</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3>Need Full Satellite Protection?</h3>
+            <p>Upgrade to monitor unlimited satellites and get:</p>
+            <ul class="benefits-list">
+                <li>Real-time anomaly alerts</li>
+                <li>Historical telemetry analysis</li>
+                <li>Multi-satellite coordination</li>
+                <li>24/7 security operations</li>
+            </ul>
+            <button id="purchase-btn" class="cta-button">
+                <i class="fas fa-lock"></i> Get Enterprise Protection
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Update satellite status
+        function updateTelemetry() {
+            const satellites = [
+                { id: 'SAT-76B', status: 'secure', signal: 92 },
+                { id: 'SAT-42C', status: 'warning', signal: 65 },
+                { id: 'SAT-89D', status: 'critical', signal: 38 }
+            ];
+            
+            let html = '';
+            satellites.forEach(sat => {
+                html += `
+                <div class="satellite-card ${sat.status}">
+                    <h3>${sat.id}</h3>
+                    <div class="signal-meter">
+                        <div class="signal-level" style="width: ${sat.signal}%"></div>
+                    </div>
+                    <p>Signal Strength: ${sat.signal}%</p>
+                    <p>Status: <span class="status-badge">${sat.status.toUpperCase()}</span></p>
+                </div>`;
+            });
+            document.getElementById('satellite-grid').innerHTML = html;
+            
+            // Update threat table
+            const threats = [
+                { time: '2025-06-23 11:42:15Z', satellite: 'SAT-89D', type: 'Signal Degradation', severity: 'high' },
+                { time: '2025-06-23 10:15:33Z', satellite: 'SAT-42C', type: 'Unauthorized Ping', severity: 'medium' }
+            ];
+            
+            let threatHtml = '';
+            threats.forEach(t => {
+                threatHtml += `
+                <tr>
+                    <td>${t.time}</td>
+                    <td>${t.satellite}</td>
+                    <td>${t.type}</td>
+                    <td class="severity-${t.severity}">${t.severity.toUpperCase()}</td>
+                </tr>`;
+            });
+            document.getElementById('threat-events').innerHTML = threatHtml;
+        }
+        
+        // Initialize and update every 5 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTelemetry();
+            setInterval(updateTelemetry, 5000);
+        });
+    </script>
+</body>
+</html>
