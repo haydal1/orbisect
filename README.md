@@ -1,2 +1,3 @@
 # Orbisec Demo App  
-⚠️ This is a simplified demo. The full toolkit is proprietary.
+▶️ **Purpose**: Showcases satellite telemetry monitoring (simulated data).  
+⚠️ **Note**: This is a demo. The full toolkit is proprietary.  
