@@ -1,16 +1,15 @@
-# Orbisect Defense Demo Portal
-![Orbisect Shield Logo](https://via.placeholder.com/150x40?text=Orbisect+Defense)  
-*Advanced Satellite Threat Monitoring Demonstration*
+# Orbisect Defense Demo Portal  
+🛡️ **Orbisect Shield** | Advanced Satellite Threat Monitoring  
 
-## 🌐 Live Demo
+## 🌐 Live Demo  
 ➡️ **[Access Live Dashboard](https://orbisectdefense.mooo.com)**  
 
-## 🛠️ Core Features
-- Real-time satellite telemetry visualization
-- Anomaly detection with severity grading
-- Threat intelligence integration
+## 🛠️ Core Features  
+- Real-time satellite telemetry visualization  
+- Anomaly detection with severity grading  
+- Threat intelligence integration  
 - CCSDS packet analysis demo
-
+- 
 ## 🚀 Deployment Quickstart
 ```bash
 # 1. Clone repository
